@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Home/Navbar";
 import Home from "./components/Home/Home";
 import Activities from "./components/Activities/Activities";
-// import Volunteers from "./components/Volunteers/Volunteers";
+import Volunteers from "./components/Volunteers/Volunteers";
 import Organizations from "./components/Organizations/Organizations";
 import { AdminProvider } from "./Admin/AdminContext";
 
@@ -17,7 +17,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/activities" element={<Activities />} />
-            {/* <Route path="/volunteers" element={<Volunteers />} /> */}
+            <Route path="/volunteers" element={<Volunteers />} />
             <Route path="/organizations" element={<Organizations />} />
           </Routes>
         </div>
