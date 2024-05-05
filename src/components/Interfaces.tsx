@@ -1,0 +1,21 @@
+export interface User {
+  id: string;
+  name: string;
+}
+
+export interface Activity {
+  id: string;
+  name: string;
+  date: string;
+  organizer: string;
+  description: string;
+  location: string;
+  participants: string[];
+}
+
+export interface Volunteer {
+  id: string;
+  name: string;
+  city: string;
+  jobType: string;
+}

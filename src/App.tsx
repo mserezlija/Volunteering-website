@@ -1,25 +1,28 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Activities from "./components/Activities";
-import Volunteers from "./components/Volunteers";
-import Organizations from "./components/Organizations";
-import { AppProvider } from "./pages/AppContext";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Navbar from "./components/Home/Navbar";
+import Home from "./components/Home/Home";
+import Activities from "./components/Activities/Activities";
+// import Volunteers from "./components/Volunteers/Volunteers";
+import Organizations from "./components/Organizations/Organizations";
+import { AdminProvider } from "./Admin/AdminContext";
 
 const App: React.FC = () => {
   return (
-    <AppProvider>
+    <AdminProvider>
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/activities" element={<Activities />} />
-          <Route path="/volunteers" element={<Volunteers />} />
-          <Route path="/organizations" element={<Organizations />} />
-        </Routes>
+        <div className="container mt-4">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/activities" element={<Activities />} />
+            {/* <Route path="/volunteers" element={<Volunteers />} /> */}
+            <Route path="/organizations" element={<Organizations />} />
+          </Routes>
+        </div>
       </Router>
-    </AppProvider>
+    </AdminProvider>
   );
 };
 
