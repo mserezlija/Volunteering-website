@@ -19,3 +19,11 @@ export interface Volunteer {
   city: string;
   jobType: string;
 }
+
+export interface Organization {
+  id: string;
+  name: string;
+  address: string;
+  city: string;
+  description: string;
+}
