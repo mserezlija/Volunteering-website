@@ -6,7 +6,6 @@ export interface User {
 export interface Activity {
   id: string;
   name: string;
-  date: string;
   organizer: string;
   description: string;
   location: string;
@@ -25,5 +24,4 @@ export interface Organization {
   name: string;
   address: string;
   city: string;
-  description: string;
 }

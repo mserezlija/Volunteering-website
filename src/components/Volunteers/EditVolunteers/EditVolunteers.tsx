@@ -1,17 +1,21 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
-import { Volunteer } from "../Interfaces";
+import { Volunteer } from "../../Interfaces";
+import styles from "./EditVolunteers.module.css";
 
-const AddVolunteers: React.FC = () => {
+interface Props {
+  volunteer: Volunteer;
+  updateVolunteer: (updatedVolunteer: Volunteer) => Promise<void>;
+}
+
+const EditVolunteer: React.FC<Props> = ({ volunteer, updateVolunteer }) => {
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState<Partial<Volunteer>>({
-    name: "",
-    city: "",
-    jobType: "",
+  const [formData, setFormData] = useState({
+    name: volunteer.name,
+    city: volunteer.city,
+    jobType: volunteer.jobType,
   });
-  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -20,77 +24,76 @@ const AddVolunteers: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.city || !formData.jobType) {
-      setError("Please fill in all fields.");
-      return;
-    }
-
     try {
-      const newVolunteer: Volunteer = {
-        id: `volunteer_${Date.now()}`,
-        name: formData.name!,
-        city: formData.city!,
-        jobType: formData.jobType!,
-      };
-
-      await axios.post("http://localhost:5000/volunteers", newVolunteer);
-      console.log("Added new volunteer:", newVolunteer);
-      setFormData({
-        name: "",
-        city: "",
-        jobType: "",
+      await updateVolunteer({
+        ...volunteer,
+        name: formData.name,
+        city: formData.city,
+        jobType: formData.jobType,
       });
+      console.log("Volunteer updated successfully!");
       setShowModal(false);
     } catch (error) {
-      console.error("Error adding volunteer:", error);
+      console.error("Error updating volunteer:", error);
     }
   };
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShowModal(true)}>
-        Add New Volunteer
+      <Button
+        className={`${styles.editButton} ml-2`}
+        onClick={() => setShowModal(true)}
+      >
+        Edit
       </Button>
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Volunteer</Modal.Title>
+          <Modal.Title className={styles.modalTitle}>
+            Edit Volunteer
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={styles.modalBody}>
           <form onSubmit={handleSubmit}>
-            <label>
+            <label className={styles.formLabel}>
               Name:
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                className={styles.formInput}
                 required
               />
             </label>
-            <label>
+            <label className={styles.formLabel}>
               City:
               <input
                 type="text"
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
+                className={styles.formInput}
                 required
               />
             </label>
-            <label>
+            <label className={styles.formLabel}>
               Job Type:
               <input
                 type="text"
                 name="jobType"
                 value={formData.jobType}
                 onChange={handleChange}
+                className={styles.formInput}
                 required
               />
             </label>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <Button variant="primary" type="submit">
-              Add Volunteer
+            <Button
+              variant="primary"
+              type="submit"
+              className={styles.formButton}
+            >
+              Update Volunteer
             </Button>
           </form>
         </Modal.Body>
@@ -99,4 +102,4 @@ const AddVolunteers: React.FC = () => {
   );
 };
 
-export default AddVolunteers;
+export default EditVolunteer;

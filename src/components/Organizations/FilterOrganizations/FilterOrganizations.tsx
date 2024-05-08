@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Organization } from "../Interfaces";
+import { useState } from "react";
+import { Organization } from "../../Interfaces";
+import styles from "./FilterOrganizations.module.css";
 
 interface Props {
   organizations: Organization[];
@@ -55,13 +56,13 @@ const FilterOrganizations: React.FC<Props> = ({
   };
 
   return (
-    <div className="mb-3">
-      <label htmlFor="cityFilter" className="form-label">
+    <div className={styles.filterContainer}>
+      <label htmlFor="cityFilter" className={styles.filterLabel}>
         Filter by City:
       </label>
       <select
         id="cityFilter"
-        className="form-select"
+        className={styles.filterSelect}
         value={cityFilter}
         onChange={handleChangeCity}
       >
@@ -72,12 +73,12 @@ const FilterOrganizations: React.FC<Props> = ({
           </option>
         ))}
       </select>
-      <label htmlFor="nameFilter" className="form-label">
+      <label htmlFor="nameFilter" className={styles.filterLabel}>
         Filter by Name:
       </label>
       <select
         id="nameFilter"
-        className="form-select"
+        className={styles.filterSelect}
         value={nameFilter}
         onChange={handleChangeName}
       >
@@ -88,12 +89,12 @@ const FilterOrganizations: React.FC<Props> = ({
           </option>
         ))}
       </select>
-      <label htmlFor="addressFilter" className="form-label">
+      <label htmlFor="addressFilter" className={styles.filterLabel}>
         Filter by Address:
       </label>
       <select
         id="addressFilter"
-        className="form-select"
+        className={styles.filterSelect}
         value={addressFilter}
         onChange={handleChangeAddress}
       >

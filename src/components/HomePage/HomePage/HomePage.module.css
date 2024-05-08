@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.heading {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+.lead {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+
+.hr {
+  border: none;
+  border-top: 1px solid #ced4da;
+  margin: 20px auto;
+}
+
+.paragraph {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.info {
+  max-width: 800px;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+
+.sectionText {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+
+.link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #000000;
+}

@@ -1,0 +1,40 @@
+.container {
+  margin-top: 50px;
+  padding: 0 20px;
+  max-width: 80%;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.list-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-group-item {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.list-group-item .name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.list-group-item .address {
+  color: #666;
+}
+
+.action-buttons {
+  margin-top: 10px;
+}
+
+.action-buttons button {
+  margin-right: 10px;
+}

@@ -3,7 +3,6 @@
     {
       "id": "activity_1",
       "name": "Activity 1",
-      "date": "2025-01-01",
       "organizer": "organization_1",
       "description": "Brief description of activity 1",
       "location": "Location 1",
@@ -12,11 +11,34 @@
     {
       "id": "activity_2",
       "name": "Activity 2",
-      "date": "2025-01-15",
       "organizer": "organization_2",
       "description": "Brief description of activity 2",
       "location": "Location 2",
       "participants": ["Ivana", "Jure", "Antonia"]
+    },
+    {
+      "id": "activity_3",
+      "name": "Activity 3",
+      "organizer": "organization_3",
+      "description": "Brief description of activity 3",
+      "location": "Location 3",
+      "participants": ["Antonia"]
+    },
+    {
+      "id": "activity_4",
+      "name": "Activity 4",
+      "organizer": "organization_4",
+      "description": "Brief description of activity 2",
+      "location": "Location 2",
+      "participants": ["Ivana", "Jure", "Antonia"]
+    },
+    {
+      "id": "activity_5",
+      "name": "Activity 5",
+      "organizer": "organization_5",
+      "description": "Brief description of activity 5",
+      "location": "Location 5",
+      "participants": ["Ivana", "Jure"]
     }
   ],
   "volunteers": [
@@ -31,23 +53,64 @@
       "name": "Volunteer 2",
       "city": "City 2",
       "jobType": "Type B"
+    },
+    {
+      "id": "volunteer_3",
+      "name": "Volunteer 3",
+      "city": "City 3",
+      "jobType": "Type C"
+    },
+    {
+      "id": "volunteer_4",
+      "name": "Volunteer 4",
+      "city": "City 3",
+      "jobType": "Type D"
+    },
+    {
+      "id": "volunteer_5",
+      "name": "Volunteer 5",
+      "city": "City 2",
+      "jobType": "Type E"
     }
   ],
   "organizations": [
     {
       "id": "organization_1",
-      "name": "Organization 3",
+      "name": "Organization 1",
       "address": "Address 1",
-      "city": "City 1",
-      "description": "Description of organization 1"
+      "city": "City 1"
     },
     {
       "id": "organization_2",
       "name": "Organization 2",
       "address": "Address 1",
-      "city": "City 2",
-      "description": "Description of organization 2"
+      "city": "City 2"
+    },
+    {
+      "id": "organization_3",
+      "name": "Organization 3",
+      "address": "Address 2",
+      "city": "City 2"
+    },
+    {
+      "id": "organization_4",
+      "name": "Organization 4",
+      "address": "Address 4",
+      "city": "City 4"
+    },
+    {
+      "id": "organization_5",
+      "name": "Organization 5",
+      "address": "Address 5",
+      "city": "City 5"
     }
   ],
-  "pending-requests": []
+  "pending-requests": [
+    {
+      "id": "organization_Pending",
+      "name": "Organization Pending",
+      "address": "Address Pending",
+      "city": "City Pending"
+    }
+  ]
 }

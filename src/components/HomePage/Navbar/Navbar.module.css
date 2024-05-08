@@ -1,0 +1,45 @@
+.navbar {
+  background-color: #ffffff;
+}
+
+.brand {
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.linkBtn {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #000000;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.linkBtn:hover {
+  border-color: #000000;
+  border-radius: 4px;
+}
+
+.checkbox {
+  margin-right: 5px;
+  border-color: #ccc;
+  border-width: 2px;
+}
+
+.checkbox:hover {
+  border-color: #0056b3;
+}
+
+.label {
+  color: #000000;
+}

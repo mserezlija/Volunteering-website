@@ -1,0 +1,30 @@
+.signUpButton {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.modalHeader {
+  background-color: #007bff;
+  color: #fff;
+  border-bottom: none;
+}
+
+.modalTitle {
+  margin: 0;
+}
+
+.modalBody {
+  padding: 20px;
+  height: 220px;
+}
+
+.inputField {
+  margin-bottom: 15px;
+}
+
+.errorMessage {
+  color: #dc3545;
+  margin-top: 5px;
+}

@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Organization } from "../Interfaces";
-import { AdminContext } from "../../Admin/AdminContext";
+import { Organization } from "../../Interfaces";
+import { AdminContext } from "../../../Admin/AdminContext";
+import styles from "./PendingOrganizations.module.css";
 
 const PendingOrganizations: React.FC = () => {
   const { isAdmin } = useContext(AdminContext);
@@ -42,25 +43,25 @@ const PendingOrganizations: React.FC = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className={styles.container}>
       <h2>Pending Organization Requests</h2>
-      <ul className="list-group">
+      <ul className={styles["list-group"]}>
         {pendingRequests.map((org) => (
-          <li key={org.id} className="list-group-item">
-            <div>{org.name}</div>
-            <div>
+          <li key={org.id} className={styles["list-group-item"]}>
+            <div className={styles.name}>{org.name}</div>
+            <div className={styles.address}>
               {org.address}, {org.city}
             </div>
             {isAdmin && (
-              <div>
+              <div className={styles["action-buttons"]}>
                 <button
-                  className="btn btn-success"
+                  className={`btn btn-success ${styles["action-btn"]}`}
                   onClick={() => handleAction(org.id, "approve")}
                 >
                   Approve
                 </button>
                 <button
-                  className="btn btn-danger ms-2"
+                  className={`btn btn-danger ${styles["action-btn"]}`}
                   onClick={() => handleAction(org.id, "reject")}
                 >
                   Reject

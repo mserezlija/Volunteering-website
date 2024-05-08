@@ -1,11 +1,9 @@
-import React from "react";
 import useFetchActivities from "../components/Activities/fetchActivities";
 
 const AdminPage: React.FC = () => {
   const { data: users, deleteActivity } = useFetchActivities("users");
 
   const handleDeleteUser = (id: string) => {
-    console.log("Deleting user with ID:", id);
     deleteActivity(id);
   };
 

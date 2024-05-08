@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { Activity } from "../Interfaces";
+import { Activity } from "../../Interfaces";
+import styles from "./AddActivity.module.css";
 
 const AddActivity: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState<Partial<Activity>>({
     name: "",
-    date: "",
     organizer: "",
     description: "",
     location: "",
@@ -43,7 +43,6 @@ const AddActivity: React.FC = () => {
     e.preventDefault();
     if (
       !formData.name ||
-      !formData.date ||
       !formData.organizer ||
       !formData.description ||
       !formData.location
@@ -56,7 +55,6 @@ const AddActivity: React.FC = () => {
       const newActivity: Activity = {
         id: `activity_${Date.now()}`,
         name: formData.name!,
-        date: formData.date!,
         organizer: formData.organizer!,
         description: formData.description!,
         location: formData.location!,
@@ -67,7 +65,6 @@ const AddActivity: React.FC = () => {
       console.log("Added new activity:", newActivity);
       setFormData({
         name: "",
-        date: "",
         organizer: "",
         description: "",
         location: "",
@@ -81,8 +78,12 @@ const AddActivity: React.FC = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShowModal(true)}>
-        Add New Activity
+      <Button
+        variant="primary"
+        className={styles.formButton}
+        onClick={() => setShowModal(true)}
+      >
+        Add new activity
       </Button>
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -90,10 +91,11 @@ const AddActivity: React.FC = () => {
           <Modal.Title>Add New Activity</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            <label>
+          <form className={styles.formContainer} onSubmit={handleSubmit}>
+            <label className={styles.formLabel}>
               Name:
               <input
+                className={styles.formInput}
                 type="text"
                 name="name"
                 value={formData.name}
@@ -101,19 +103,10 @@ const AddActivity: React.FC = () => {
                 required
               />
             </label>
-            <label>
-              Date:
-              <input
-                type="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                required
-              />
-            </label>
-            <label>
+            <label className={styles.formLabel}>
               Organizer:
               <input
+                className={styles.formInput}
                 type="text"
                 name="organizer"
                 value={formData.organizer}
@@ -121,9 +114,10 @@ const AddActivity: React.FC = () => {
                 required
               />
             </label>
-            <label>
+            <label className={styles.formLabel}>
               Description:
               <input
+                className={styles.formInput}
                 type="text"
                 name="description"
                 value={formData.description}
@@ -131,9 +125,10 @@ const AddActivity: React.FC = () => {
                 required
               />
             </label>
-            <label>
+            <label className={styles.formLabel}>
               Location:
               <input
+                className={styles.formInput}
                 type="text"
                 name="location"
                 value={formData.location}
@@ -142,20 +137,23 @@ const AddActivity: React.FC = () => {
               />
             </label>
             <div>
-              <label>
+              <label className={styles.formLabel}>
                 Participants:
                 <input
+                  className={styles.formInput}
                   type="text"
                   value={participantInput}
                   onChange={handleParticipantChange}
                   required
                 />
-                <Button onClick={addParticipant}>Add Participant</Button>
+                <Button className={styles.formButton} onClick={addParticipant}>
+                  Add Participant
+                </Button>
               </label>
             </div>
             {formData.participants && formData.participants.length > 0 && (
               <div>
-                <p>Participants:</p>
+                <p className={styles.formLabel}>Participants:</p>
                 <ul>
                   {formData.participants.map((participant, index) => (
                     <li key={index}>{participant}</li>
@@ -163,8 +161,8 @@ const AddActivity: React.FC = () => {
                 </ul>
               </div>
             )}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <Button variant="primary" type="submit">
+            {error && <p className={styles["error"]}>{error}</p>}
+            <Button className={styles.formButton} type="submit">
               Add Activity
             </Button>
           </form>

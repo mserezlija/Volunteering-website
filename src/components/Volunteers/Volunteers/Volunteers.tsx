@@ -1,10 +1,11 @@
 import { useContext, useState, useEffect } from "react";
-import useFetchVolunteers from "./useFetchVolunteers";
-import { Volunteer } from "../Interfaces";
-import { AdminContext } from "../../Admin/AdminContext";
-import FilterVolunteers from "./FilterVolunteers";
-import AddVolunteer from "./AddVolunteers";
-import EditVolunteer from "./EditVolunteers";
+import useFetchVolunteers from "../useFetchVolunteers";
+import { Volunteer } from "../../Interfaces";
+import { AdminContext } from "../../../Admin/AdminContext";
+import FilterVolunteers from "../FilterVolunteers";
+import AddVolunteer from "../AddVolunteers/AddVolunteers";
+import EditVolunteer from "../EditVolunteers/EditVolunteers";
+import styles from "./Volunteers.module.css";
 
 const Volunteers: React.FC = () => {
   const { isAdmin } = useContext(AdminContext);
@@ -38,34 +39,34 @@ const Volunteers: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="mt-5 mb-4">Volunteers Page</h1>
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Volunteers Page</h1>
       {isAdmin && (
         <div className="mb-3">
           <AddVolunteer />
         </div>
       )}
       <FilterVolunteers volunteers={volunteers} applyFilters={applyFilters} />
-      <div className="row">
+      <div className={styles.row}>
         {filteredVolunteers.map((volunteer: Volunteer) => (
-          <div key={volunteer.id} className="col-md-4 mb-4">
+          <div key={volunteer.id} className={styles.card}>
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{volunteer.name}</h5>
                 <p className="card-text">City: {volunteer.city}</p>
                 <p className="card-text">Job: {volunteer.jobType}</p>
                 {isAdmin && (
-                  <div>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => handleDeleteVolunteer(volunteer.id)}
-                    >
-                      Delete
-                    </button>
+                  <div className={styles.actions}>
                     <EditVolunteer
                       volunteer={volunteer}
                       updateVolunteer={updateVolunteer}
                     />
+                    <button
+                      className={`btn ${styles.deleteButton}`}
+                      onClick={() => handleDeleteVolunteer(volunteer.id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 )}
               </div>

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { Activity } from "../Interfaces";
+import { Activity } from "../../Interfaces";
+import styles from "./SignUpActivity.module.css";
 
 interface SignUpFormProps {
   activityId: string;
@@ -10,7 +11,7 @@ interface SignUpFormProps {
   updateActivity: (updatedActivity: Activity) => void;
 }
 
-const SignUpForm: React.FC<SignUpFormProps> = ({
+const SignUpActivity: React.FC<SignUpFormProps> = ({
   activityId,
   selectedActivity,
   updateActivity,
@@ -57,27 +58,34 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShowModal(true)}>
+      <Button
+        variant="primary"
+        onClick={() => setShowModal(true)}
+        className={styles.signUpButton}
+      >
         Sign Up
       </Button>
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Sign Up for Activity</Modal.Title>
+        <Modal.Header closeButton className={styles.modalHeader}>
+          <Modal.Title className={styles.modalTitle}>
+            Sign Up for Activity
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className={styles.modalBody}>
           <form onSubmit={handleSubmit}>
-            <label>
-              Name:
+            <div className={styles.inputField}>
+              <label htmlFor="name">Name: </label>
               <input
                 type="text"
+                id="name"
                 placeholder="Please enter your full name..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-            </label>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            </div>
+            {error && <p className={styles.errorMessage}>{error}</p>}
             <Button variant="primary" type="submit">
               Sign Up
             </Button>
@@ -88,4 +96,4 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   );
 };
 
-export default SignUpForm;
+export default SignUpActivity;

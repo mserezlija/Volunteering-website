@@ -9,7 +9,7 @@ const useFetchOrganizations = (resource: string) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/${resource}`);
-        setData(response.data); // Update to set the entire response data
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

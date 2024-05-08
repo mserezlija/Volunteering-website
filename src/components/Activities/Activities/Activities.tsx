@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
-import useData from "./fetchActivities";
-import { AdminContext } from "../../Admin/AdminContext";
-import ActivityDetails from "./ActivityDetails";
-import AddActivity from "./AddActivity";
-import { Activity } from "../Interfaces";
+import useData from "../fetchActivities";
+import { AdminContext } from "../../../Admin/AdminContext";
+import ActivityDetails from "../ActivityDetails/ActivityDetails";
+import AddActivity from "../AddActivity/AddActivity";
+import { Activity } from "../../Interfaces";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import styles from "./Activities.module.css";
 
 const Activities: React.FC = () => {
   const { isAdmin } = useContext(AdminContext);
@@ -36,19 +37,23 @@ const Activities: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="mt-5 mb-4">Activities Page</h1>
-      <div className="row">
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Activities Page</h1>
+      <AddActivity />
+      <div className={styles.row}>
         {activities.map((activity) => (
-          <div key={activity.id} className="col-md-4 mb-4">
+          <div key={activity.id} className={styles.card}>
             <Card>
-              <Card.Body>
-                <Card.Title>{activity.name}</Card.Title>
-                <Card.Text>Date: {activity.date}</Card.Text>
-                <Card.Text>Organizer: {activity.organizer}</Card.Text>
+              <Card.Body className={styles.cardBody}>
+                <Card.Title className={styles.cardTitle}>
+                  {activity.name}
+                </Card.Title>
+                <Card.Text className={styles.cardText}>
+                  Organizer: {activity.organizer}
+                </Card.Text>
                 <Button
                   variant="primary"
-                  className="mr-2"
+                  className={`mr-2 ${styles.viewButton}`}
                   onClick={() => handleViewDetails(activity)}
                 >
                   View Details
@@ -56,7 +61,7 @@ const Activities: React.FC = () => {
                 {isAdmin && (
                   <Button
                     variant="danger"
-                    className="mr-2"
+                    className={`mr-2 ${styles.deleteButton}`}
                     onClick={() => handleDeleteActivity(activity.id)}
                   >
                     Delete Activity
@@ -77,7 +82,6 @@ const Activities: React.FC = () => {
           />
         </Modal>
       )}
-      <AddActivity />
     </div>
   );
 };
